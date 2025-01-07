@@ -23,8 +23,7 @@ import java.time.LocalDateTime;
 @Service
 public class AccountService implements UserDetailsService {
 
-    public AccountService() {
-    }
+
     @Autowired
     PasswordEncoder passwordEncoder;
 
@@ -81,11 +80,13 @@ public class AccountService implements UserDetailsService {
 
         Account account = findAccountByUsername(username);
         if(account == null){
-            throw new UsernameNotFoundException("User not found!");
+            throw new UsernameNotFoundException("User or Password is Incorrect!");
         }
-        return new org.springframework.security.core.userdetails.User(
+        return new Account(
                 account.getUsername(),
                 account.getPassword(),
+                account.getBalance(),
+                account.getTransactions(),
                 authorities()
         );
 
@@ -115,7 +116,7 @@ public class AccountService implements UserDetailsService {
         transactionRepository.save(debitTransaction);
 
         Transaction creditTransaction = new Transaction(amount,
-                "Transfer out to "+ fromAccount.getUsername(), LocalDateTime.now(), toAccount);
+                "Amount received from "+ fromAccount.getUsername(), LocalDateTime.now(), toAccount);
         transactionRepository.save(creditTransaction);
 
 

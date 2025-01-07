@@ -19,16 +19,20 @@ public class Transaction {
 
     @ManyToOne
     @JoinColumn(name = "account_id")
-    private com.project.bankapp.model.Account account;
+    private Account account;
 
     public Transaction() {
     }
 
-    public Transaction(BigDecimal amount, String type, LocalDateTime timestamp, com.project.bankapp.model.Account account) {
+    public Transaction(BigDecimal amount,String type,LocalDateTime timestamp,Account account) {
         this.amount = amount;
         this.type = type;
         this.timestamp = timestamp;
         this.account = account;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public BigDecimal getAmount() {
@@ -55,11 +59,11 @@ public class Transaction {
         this.timestamp = timestamp;
     }
 
-    public com.project.bankapp.model.Account getAccount() {
+    public Account getAccount() {
         return account;
     }
 
-    public void setAccount(com.project.bankapp.model.Account account) {
+    public void setAccount(Account account) {
         this.account = account;
     }
 }
