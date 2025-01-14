@@ -1,8 +1,14 @@
-FROM maven:3.8.3-openjdk-17 AS build
-COPY . .
-RUN mvn clean package -DskipTests
+# Use OpenJDK 21 as the base image
+FROM openjdk:21
 
-FROM openjdk:21-jdk-slim
-COPY --from=build  /target/bankapp-0.0.1-SNAPSHOT.jar bankapp.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","bankapp.jar"]
+# Install Maven
+RUN apt-get update && apt-get install -y maven
+
+# Set the working directory
+WORKDIR /app
+
+# Copy your project files into the container
+COPY . .
+
+# Default command (adjust if necessary)
+CMD ["mvn", "clean", "install"]
