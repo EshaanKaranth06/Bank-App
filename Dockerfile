@@ -4,7 +4,7 @@ FROM openjdk:21-jdk-slim AS build
 RUN apt-get update && apt-get install -y wget curl gnupg2
 
 # Download and install Maven
-RUN wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz \
+RUN wget https://archive.apache.org/dist/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz \
     && tar -xvf apache-maven-3.8.6-bin.tar.gz \
     && mv apache-maven-3.8.6 /opt/maven
 
