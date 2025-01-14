@@ -1,14 +1,22 @@
-# Use OpenJDK 21 as the base image
-FROM openjdk:21
+FROM openjdk:21-jdk-slim AS build
 
-# Install Maven
-RUN apt-get update && apt-get install -y maven
+# Install Maven dependencies
+RUN apt-get update && apt-get install -y wget curl gnupg2
 
-# Set the working directory
-WORKDIR /app
+# Download and install Maven
+RUN wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz \
+    && tar -xvf apache-maven-3.8.6-bin.tar.gz \
+    && mv apache-maven-3.8.6 /opt/maven
 
-# Copy your project files into the container
+# Set Maven environment variables
+ENV MAVEN_HOME=/opt/maven
+ENV PATH=$MAVEN_HOME/bin:$PATH
+
+# Copy the project files and run Maven
 COPY . .
+RUN mvn clean package -DskipTests
 
-# Default command (adjust if necessary)
-CMD ["mvn", "clean", "install"]
+FROM openjdk:21-jdk-slim
+COPY --from=build /target/bankapp-0.0.1-SNAPSHOT.jar bankapp.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "bankapp.jar"]
