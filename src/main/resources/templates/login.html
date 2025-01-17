@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login</title>
+    <title>Login - PROSPEX BANK</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/30deadd230.js" crossorigin="anonymous"></script>
     <style>
+
+
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #000000, #ffd700);
-            color: #ffffff;
             margin: 0;
             padding: 0;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+
+
+            background-image: url('/images/pat.jpg');
+            background-size:50%;
+            background-repeat: repeat repeat;
+
+            background-position: center;
         }
 
+
         .navbar-custom {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0);
             position: fixed;
             top: 0;
             width: 100%;
@@ -29,8 +38,12 @@
             color: #ffffff !important;
         }
 
-        .navbar-custom .navbar-brand {
+        .navbar-custom{
             font-weight: bold;
+        }
+
+        .navbar-brand{
+            font-family:sans-serif;
         }
 
         .navbar-custom .social-icons a {
@@ -43,31 +56,31 @@
         .navbar-custom .social-icons a:hover {
             color: #ffd700;
         }
+        .container h2{
+            color: rgba(207,181,59);
+            font-size: 4rem;
+            font-family: 'Dancing Script',cursive;
+        }
 
         .container {
             max-width: 450px;
             padding: 30px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255);
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(100, 45, 120);
             position: relative;
             text-align: center;
         }
 
-        .container h2 {
-            color: #ffffff;
-            margin-bottom: 20px;
-        }
-
         .form-group label {
-            color: #dddddd;
+            color: rgba(150,40,10);
             text-align: left;
             display: block;
         }
 
         .form-group input {
             border: 1px solid #ffd700;
-            background-color: #333;
+            background-color: rgba(169,169,169);
             color: #ffffff;
         }
 
@@ -79,7 +92,11 @@
         }
 
         .btn:hover {
-            background-color: #ffc700;
+            background-color:rgba(255, 234, 120);
+        }
+
+        .custom-text{
+            color: rgba(0, 0, 0);
         }
 
         .custom-link {
@@ -89,12 +106,12 @@
         }
 
         .custom-link:hover {
-            color: #ffecb3;
+            color: rgba(255, 234, 120);
             text-decoration: underline;
         }
 
         .footer {
-            background-color: rgba(0, 0, 0, 0.7);
+            background: linear-gradient(to right, rgb(16, 0, 0) 50%, rgb(255, 0, 0) 100%);)
             color: white;
             padding: 15px 0;
             font-size: 14px;
@@ -103,6 +120,9 @@
             width: 100%;
             text-align: center;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .footer p {
+            color: rgba(255, 255, 255);
         }
 
         @keyframes shake {
@@ -116,12 +136,12 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-custom">
-    <a class="navbar-brand" href="#">Bank Simulator</a>
+    <a class="navbar-brand" href="#">PROSPEX BANK</a>
     <div class="ml-auto social-icons">
-        <a href="https://www.youtube.com/@codewithgoldencat" target="_blank" title="YouTube">
-            <i class="fab fa-youtube"></i>
+        <a href="https://github.com/iceheadcoder" target="_blank" title="GitHub">
+            <i class="fab fa-github"></i>
         </a>
-        <a href="https://www.linkedin.com/in/code-with-goldecat-453460297/" target="_blank" title="LinkedIn">
+        <a href="https://www.linkedin.com/in/eshaan-karanth-051b581b8/" target="_blank" title="LinkedIn">
             <i class="fab fa-linkedin"></i>
         </a>
     </div>
@@ -140,7 +160,7 @@
         </div>
         <button type="submit" class="btn btn-block">Login</button>
     </form>
-    <p class="text-center mt-3">Don't have an account? <a th:href="@{/register}" class="custom-link">Register here</a></p>
+    <p class="text-center mt-3 custom-text">Don't have an account? <a th:href="@{/register}" class="custom-link">Register here</a></p>
 
     <div th:if="${param.error}" class="alert alert-danger mt-3 text-center">
         Invalid username or password.
@@ -149,7 +169,7 @@
 
 <!-- Footer -->
 <footer class="footer">
-    <p>&copy; 2025 Eshaan Karanth. All rights reserved. | <a href="#" class="custom-link">Privacy Policy</a> | <a href="#" class="custom-link">Terms of Service</a></p>
+    <p>&copy; 2025 Eshaan Karanth. All rights reserved.</p>
 </footer>
 
 </body>
