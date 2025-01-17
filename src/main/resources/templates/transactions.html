@@ -7,19 +7,23 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #000000, #ffd700);
-            color: #ffffff;
             margin: 0;
             padding: 0;
             height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            flex-direction: column;
+            align-items: center;
+
+
+            background-image: url('/images/pat.jpg');
+            background-size:50%;
+            background-repeat: repeat repeat;
+
+            background-position: center;
         }
 
         .navbar-custom {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0);
             position: fixed;
             top: 0;
             width: 100%;
@@ -41,6 +45,7 @@
         }
 
         h2 {
+            color: white;
             margin-bottom: 20px;
         }
 
@@ -89,7 +94,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-custom">
-    <a class="navbar-brand" href="#">Bank Simulator</a>
+    <a class="navbar-brand" href="#">PROSPEX BANK</a>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a class="nav-link" th:href="@{/dashboard}">Dashboard</a></li>
         <li class="nav-item"><a class="nav-link" th:href="@{/transactions}">Transactions</a></li>
